@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:smart_home_app/src/pages/home_page.dart';
 
 import 'config/app_them.dart';
+import 'pages/home.dart';
 
 class App extends StatelessWidget {
   @override
@@ -10,7 +11,7 @@ class App extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.appTheme,
-      home: HomePage(),
+      home: Home(),
     );
   }
 }
