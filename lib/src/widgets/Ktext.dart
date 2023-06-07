@@ -40,7 +40,7 @@ class KText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       '$text',
-      style: GoogleFonts.openSans(
+      style: GoogleFonts.rubik(
         decoration: decoration,
         fontSize: fontSize ?? 14,
         fontWeight: fontWeight ?? FontWeight.w500,

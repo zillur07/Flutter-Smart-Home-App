@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import '../widgets/hex_color.dart';
 
 class AppColors {
+  static final dartkgrey = HexColor('#4C7380');
+  static final lightgrey = HexColor('#D8E4E8');
+  static final morelightgrey = HexColor('#E4ECEF');
   static final black = Colors.black;
   static final black54 = Colors.black54;
   static final white = Colors.white;
