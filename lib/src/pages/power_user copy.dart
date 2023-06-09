@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
-import '../widgets/Ktext.dart';
+
 import '../widgets/hex_color.dart';
 
 class PowerUser2 extends StatelessWidget {

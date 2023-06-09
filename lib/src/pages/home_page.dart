@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
+
 import 'package:get/get.dart';
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+
 import 'package:smart_home_app/src/consts/app_colors.dart';
 import 'package:smart_home_app/src/widgets/render_img.dart';
 import '../config/app_utils.dart';

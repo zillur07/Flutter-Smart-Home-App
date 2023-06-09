@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smart_home_app/src/pages/grap.dart';
 
 import '../widgets/Ktext.dart';
 import '../widgets/hex_color.dart';
@@ -67,11 +66,6 @@ class PowerUser extends StatelessWidget {
                             KText(text: 'Power Usage'),
                           ],
                         ),
-                        Container(
-                          height: 250,
-                          width: Get.width,
-                          child: LineChartSample1(),
-                        )
                       ],
                     ),
                   ),

@@ -1,18 +1,17 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:smart_home_app/src/pages/grap.dart';
+
 import 'package:smart_home_app/src/pages/home_page.dart';
 import 'package:smart_home_app/src/pages/power_user.dart';
 import 'package:smart_home_app/src/widgets/hex_color.dart';
 
-import '../controllers/home_controller.dart';
-import '../widgets/render_svg.dart';
-
 class Home extends StatelessWidget {
   List<Widget> _buildScreens() {
-    return [HomePage(), PowerUser(), HomePage(), PowerUser()];
+    return [HomePage(), PowerUser(), HomePage(), LineChartSample1()];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
