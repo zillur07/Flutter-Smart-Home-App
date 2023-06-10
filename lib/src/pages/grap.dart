@@ -10,8 +10,7 @@ class _LineChart extends StatelessWidget {
   Widget build(BuildContext context) {
     return LineChart(
       isShowingMainData ? sampleData1 : sampleData2,
-
-      // duration:  Duration(milliseconds: 250),
+      swapAnimationDuration: Duration(milliseconds: 25000),
     );
   }
 
@@ -23,7 +22,7 @@ class _LineChart extends StatelessWidget {
         lineBarsData: lineBarsData1,
         minX: 0,
         maxX: 15,
-        maxY: 5,
+        maxY: 5.5,
         minY: 0,
       );
 
@@ -35,7 +34,7 @@ class _LineChart extends StatelessWidget {
         lineBarsData: lineBarsData2,
         minX: 0,
         maxX: 14,
-        maxY: 5,
+        maxY: 5.5,
         minY: 0,
       );
 
@@ -265,17 +264,17 @@ class LineChartSample1State extends State<LineChartSample1> {
               ),
             ],
           ),
-          IconButton(
-            icon: Icon(
-              Icons.refresh,
-              color: Colors.white.withOpacity(isShowingMainData ? 1.0 : 0.5),
-            ),
-            onPressed: () {
-              setState(() {
-                isShowingMainData = !isShowingMainData;
-              });
-            },
-          )
+          // IconButton(
+          //   icon: Icon(
+          //     Icons.refresh,
+          //     color: Colors.white.withOpacity(isShowingMainData ? 1.0 : 0.5),
+          //   ),
+          //   onPressed: () {
+          //     setState(() {
+          //       isShowingMainData = !isShowingMainData;
+          //     });
+          //   },
+          // )
         ],
       ),
     );

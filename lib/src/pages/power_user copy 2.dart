@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../widgets/Ktext.dart';
 import '../widgets/hex_color.dart';
 
-class PowerUser extends StatelessWidget {
+class PowerUser3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // DateTime dateTime;
