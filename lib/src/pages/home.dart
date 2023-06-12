@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:smart_home_app/src/pages/details_page.dart';
 
 import 'package:smart_home_app/src/pages/home_page.dart';
 import 'package:smart_home_app/src/pages/power_user.dart';
@@ -13,7 +14,7 @@ import 'power_user copy 2.dart';
 
 class Home extends StatelessWidget {
   List<Widget> _buildScreens() {
-    return [HomePage(), PowerUser3(), HomePage(), PowerUser()];
+    return [HomePage(), PowerUser3(), DetailsPage(), PowerUser()];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
