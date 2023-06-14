@@ -172,14 +172,14 @@ class _DetailsPageState extends State<DetailsPage> {
                                     child: KText(
                                       textAlign: TextAlign.start,
                                       text: 'Lamp',
-                                      fontSize: 28,
+                                      fontSize: 23,
                                       color: Colors.white,
                                     ),
                                   ),
                                   RenderImg(
                                     path: 'bg_lamp.png',
                                     fit: BoxFit.cover,
-                                    width: 100,
+                                    width: 120,
                                   )
                                 ],
                               ),
@@ -205,7 +205,7 @@ class _DetailsPageState extends State<DetailsPage> {
                 //   child: _singleSlider(),
                 // )
                 Positioned(
-                  bottom: 130,
+                  bottom: 5,
                   child: Container(
                     width: Get.width,
                     decoration: BoxDecoration(
@@ -216,12 +216,30 @@ class _DetailsPageState extends State<DetailsPage> {
                       children: [
                         Row(
                           children: [
-                            Expanded(flex: 1, child: Icon(Icons.light)),
                             Expanded(
-                              flex: 12,
+                                flex: 2,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: RenderSvg(
+                                    path: 'off_light',
+                                    height: 45,
+                                  ),
+                                )),
+                            Expanded(
+                              flex: 13,
                               child: _hatchMarkWithLabels(),
                             ),
-                            Expanded(flex: 1, child: Icon(Icons.light)),
+                            Expanded(
+                                flex: 2,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                    right: 5,
+                                  ),
+                                  child: RenderSvg(
+                                    path: 'on_light',
+                                    height: 30,
+                                  ),
+                                )),
                           ],
                         ),
                         Padding(
@@ -230,6 +248,86 @@ class _DetailsPageState extends State<DetailsPage> {
                           ),
                           child: Divider(
                             color: Colors.white60,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 15,
+                          ),
+                          child: Row(
+                            children: [
+                              KText(
+                                text: 'Usages',
+                                fontSize: 16,
+                                color: Colors.white,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 15,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              KText(
+                                text: 'Use Today',
+                                fontSize: 14,
+                                fontWeight: FontWeight.w300,
+                                color: Colors.white,
+                              ),
+                              KText(
+                                text: '50 watt',
+                                fontSize: 16,
+                                color: Colors.white,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 15,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              KText(
+                                text: 'Use Week',
+                                fontSize: 14,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w300,
+                              ),
+                              KText(
+                                text: '500 Kwh',
+                                fontSize: 16,
+                                color: Colors.white,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 15,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              KText(
+                                text: 'Use Month',
+                                fontSize: 14,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w300,
+                              ),
+                              KText(
+                                text: '5000 kwh',
+                                fontSize: 16,
+                                color: Colors.white,
+                              ),
+                            ],
                           ),
                         )
                       ],
@@ -240,12 +338,190 @@ class _DetailsPageState extends State<DetailsPage> {
             ),
           ),
           Expanded(
-            flex: 6,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(topRight: Radius.circular(40)),
-              ),
+            flex: 8,
+            child: ListView(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: HexColor('#D8E4E8'),
+                    borderRadius:
+                        BorderRadius.only(topRight: Radius.circular(40)),
+                  ),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 15,
+                          right: 2,
+                        ),
+                        child: Row(
+                          children: [
+                            KText(
+                              text: 'Scheule ',
+                              fontSize: 18,
+                              color: Colors.black87,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: HexColor('#4C7380'),
+                                  borderRadius: BorderRadius.circular(3)),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 5,
+                                ),
+                                child: KText(
+                                  text: '3',
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            Spacer(),
+                            IconButton(
+                              onPressed: () {},
+                              icon: Card(
+                                child: Icon(
+                                  Icons.add,
+                                  size: 32,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      ListView.builder(
+                        physics: BouncingScrollPhysics(),
+                        itemCount: 2,
+                        shrinkWrap: true,
+                        primary: false,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Container(
+                            margin: EdgeInsets.only(
+                              left: 15,
+                              right: 15,
+                              bottom: 8,
+                            ),
+                            height: 110,
+                            width: Get.width,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(
+                                15,
+                              ),
+                            ),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 5),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          KText(text: 'Smart Lamp'),
+                                          KText(
+                                            text: 'Dining Room  | Tue Thu',
+                                            fontWeight: FontWeight.w400,
+                                          )
+                                        ],
+                                      ),
+                                      RenderSvg(path: 'on_icon')
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 8),
+                                  child: Row(
+                                    children: [
+                                      RenderSvg(
+                                        path: 'light',
+                                        height: 45,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                          left: 5,
+                                          right: 57,
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            KText(
+                                              text: 'from',
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                            KText(
+                                              text: '8 pm',
+                                              fontSize: 16,
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 40,
+                                        width: 1,
+                                        color: Colors.grey,
+                                      ),
+                                      Spacer(),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: [
+                                          KText(
+                                            text: 'to',
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                          KText(
+                                            text: '8 am',
+                                            fontSize: 16,
+                                          )
+                                        ],
+                                      ),
+                                      Spacer(),
+                                      Container(
+                                        height: 40,
+                                        width: 1,
+                                        color: Colors.blueGrey,
+                                      ),
+                                      Spacer(),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          RenderSvg(
+                                            path: 'delete',
+                                            height: 18,
+                                          ),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          RenderSvg(
+                                            path: 'edit',
+                                            height: 18,
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           )
         ],
@@ -255,67 +531,70 @@ class _DetailsPageState extends State<DetailsPage> {
 
   _hatchMarkWithLabels() {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(
+        left: 2,
+        right: 2,
+      ),
       child: ListTile(
         subtitle: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
-                child: FlutterSlider(
-              key: Key('3343'),
-              values: [_lv4, _uv4],
-              touchSize: 50.0,
-              handlerAnimation: FlutterSliderHandlerAnimation(
-                  reverseCurve: Curves.bounceOut,
-                  curve: Curves.bounceIn,
-                  duration: Duration(milliseconds: 500),
-                  scale: 1.5),
-              rangeSlider: true,
-              ignoreSteps: [
-                FlutterSliderIgnoreSteps(from: 500, to: 1000),
-              ],
-              hatchMark: FlutterSliderHatchMark(
-                displayLines: true,
-                linesDistanceFromTrackBar: 10,
-                labelBox: FlutterSliderSizedBox(
-                  width: 40,
-                  height: 20,
-                  foregroundDecoration: BoxDecoration(color: Colors.white),
-                  transform: Matrix4.translationValues(0, 30, 0),
-                ),
-                density: 0.5,
-                labels: [],
-              ),
-              rightHandler: FlutterSliderHandler(
-                decoration: BoxDecoration(),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: Colors.white,
+              child: FlutterSlider(
+                key: Key('3343'),
+                values: [_lv4, _uv4],
+                touchSize: 20.0,
+                handlerAnimation: FlutterSliderHandlerAnimation(
+                    reverseCurve: Curves.bounceOut,
+                    curve: Curves.bounceIn,
+                    duration: Duration(milliseconds: 500),
+                    scale: 1.5),
+                rangeSlider: true,
+                ignoreSteps: [
+                  FlutterSliderIgnoreSteps(from: 500, to: 1000),
+                ],
+                hatchMark: FlutterSliderHatchMark(
+                  displayLines: true,
+                  linesDistanceFromTrackBar: 10,
+                  labelBox: FlutterSliderSizedBox(
+                    width: 40,
+                    height: 20,
+                    foregroundDecoration: BoxDecoration(color: Colors.white),
+                    transform: Matrix4.translationValues(0, 10, 0),
                   ),
-                  padding: EdgeInsets.all(3),
+                  density: 0.5,
+                ),
+                rightHandler: FlutterSliderHandler(
+                  decoration: BoxDecoration(),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: HexColor('#9A7265'),
-                      shape: BoxShape.circle,
+                      borderRadius: BorderRadius.circular(50),
+                      color: Colors.white,
+                    ),
+                    padding: EdgeInsets.all(3),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: HexColor('#9A7265'),
+                        shape: BoxShape.circle,
+                      ),
                     ),
                   ),
                 ),
+                tooltip: FlutterSliderTooltip(
+                  alwaysShowTooltip: false,
+                ),
+                max: 4000,
+                min: 0,
+                step: FlutterSliderStep(step: 80),
+                jump: true,
+                onDragging: (_handlerIndex, _lowerValue, _upperValue) {
+                  setState(() {
+                    _lv4 = _lowerValue;
+                    _uv4 = _upperValue;
+                  });
+                },
               ),
-              tooltip: FlutterSliderTooltip(
-                alwaysShowTooltip: false,
-              ),
-              max: 4000,
-              min: 0,
-              step: FlutterSliderStep(step: 100),
-              jump: true,
-              onDragging: (_handlerIndex, _lowerValue, _upperValue) {
-                setState(() {
-                  _lv4 = _lowerValue;
-                  _uv4 = _upperValue;
-                });
-              },
-            )),
+            ),
           ],
         ),
       ),

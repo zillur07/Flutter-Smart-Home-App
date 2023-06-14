@@ -9,22 +9,6 @@ import '../widgets/render_svg.dart';
 class PowerUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // DateTime dateTime;
-    // int milliseconds = 2014;
-    // int milliseconds2 = 2015;
-    // int milliseconds3 = 2016;
-    // int milliseconds4 = 2017;
-    // int milliseconds5 = 2018;
-    // final List<SalesData> chartData = [
-    //   SalesData(DateTime.fromMillisecondsSinceEpoch(milliseconds), 10),
-    //   SalesData(DateTime.fromMillisecondsSinceEpoch(milliseconds2), 28),
-    //   SalesData(DateTime.fromMillisecondsSinceEpoch(milliseconds3), 34),
-    //   SalesData(DateTime.fromMillisecondsSinceEpoch(milliseconds4), 15),
-    //   SalesData(DateTime.fromMillisecondsSinceEpoch(milliseconds5), 40)
-    // ];
-
-    // Generate some dummy data for the cahrt
-
     return Scaffold(
       body: Column(
         children: [
@@ -71,48 +55,85 @@ class PowerUser extends StatelessWidget {
                   ],
                 ),
                 Positioned(
-                  top: 27,
+                  top: 26,
                   left: 15,
-                  child: KText(
-                    text: 'Power Usage',
-                    fontSize: 25,
-                    color: Colors.white,
+                  child: Row(
+                    children: [
+                      KText(
+                        text: 'Power Usage',
+                        fontSize: 22,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+                ),
+                // Positioned(
+                //   top: 60,
+                //   left: 15,
+                //   child: Row(
+                //     children: [
+                //       KText(
+                //         text: 'Usage this Week ',
+                //         fontSize: 16,
+                //         color: Colors.white,
+                //       ),
+                //     ],
+                //   ),
+                // ),
+                // Positioned(
+                //   top: 60,
+                //   left: 15,
+                //   child: Row(
+                //     children: [
+                //       KText(
+                //         text: '2500',
+                //         fontSize: 16,
+                //         color: Colors.white,
+                //       ),
+                //     ],
+                //   ),
+                // ),
+                Positioned(
+                  top: 26,
+                  right: 15,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(50)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: RenderSvg(
+                        path: 'persent',
+                        color: HexColor('#507682'),
+                        height: 20,
+                        width: 20,
+                      ),
+                    ),
                   ),
                 ),
                 Positioned(
-                    top: 30,
-                    right: 15,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(
-                          50,
+                  bottom: 0,
+                  child: Column(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.zero,
+                        margin: EdgeInsets.zero,
+                        width: Get.width,
+                        decoration: BoxDecoration(
+                            color: HexColor('#4C7380'),
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(40))),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: 220,
+                              width: Get.width,
+                              child: LineChartSample1(),
+                            )
+                          ],
                         ),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(Icons.filter_vintage_sharp),
-                      ),
-                    )),
-                Positioned(
-                  bottom: 0,
-                  child: Container(
-                    padding: EdgeInsets.zero,
-                    margin: EdgeInsets.zero,
-                    width: Get.width,
-                    decoration: BoxDecoration(
-                        color: HexColor('#4C7380'),
-                        borderRadius:
-                            BorderRadius.only(bottomLeft: Radius.circular(40))),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 220,
-                          width: Get.width,
-                          child: LineChartSample1(),
-                        )
-                      ],
-                    ),
+                    ],
                   ),
                 ),
               ],
@@ -132,38 +153,6 @@ class PowerUser extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Row(
-                        children: [
-                          KText(
-                            text: 'Total Today ',
-                            fontSize: 16,
-                            color: Colors.black54,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: HexColor('#4C7380'),
-                                borderRadius: BorderRadius.circular(3)),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 5,
-                              ),
-                              child: KText(
-                                text: '3',
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          Spacer(),
-                          KText(
-                            text: 'See All',
-                            color: HexColor('#4C7380'),
-                          ),
-                        ],
-                      ),
                       ListView.builder(
                         itemCount: 4,
                         shrinkWrap: true,

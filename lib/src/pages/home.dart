@@ -9,6 +9,7 @@ import 'package:smart_home_app/src/pages/home_page.dart';
 import 'package:smart_home_app/src/pages/power_user.dart';
 
 import 'package:smart_home_app/src/widgets/hex_color.dart';
+import 'package:smart_home_app/src/widgets/render_svg.dart';
 
 import 'power_user copy 2.dart';
 
@@ -28,22 +29,23 @@ class Home extends StatelessWidget {
         inactiveColorSecondary: Colors.red,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(EvaIcons.dropletOff),
+        icon: Icon(EvaIcons.optionsOutline),
         title: ("Smart"),
         activeColorPrimary: HexColor('#ffffff'),
         activeColorSecondary: HexColor('#4C7380'),
         inactiveColorPrimary: CupertinoColors.white,
+        inactiveColorSecondary: Colors.red,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(CupertinoIcons.settings),
-        title: ("Profile"),
+        icon: Icon(EvaIcons.pieChart),
+        title: ("Usage"),
         activeColorPrimary: HexColor('#ffffff'),
         activeColorSecondary: HexColor('#4C7380'),
         inactiveColorPrimary: CupertinoColors.white,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(CupertinoIcons.settings),
-        title: ("About"),
+        icon: Icon(EvaIcons.person),
+        title: ("Profile"),
         activeColorPrimary: HexColor('#ffffff'),
         activeColorSecondary: HexColor('#4C7380'),
         inactiveColorPrimary: CupertinoColors.white,
