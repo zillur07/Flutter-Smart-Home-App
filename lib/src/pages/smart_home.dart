@@ -1,11 +1,24 @@
+import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_home_app/src/widgets/render_svg.dart';
 
+import '../controllers/smart_home_data.dart';
 import '../widgets/Ktext.dart';
 import '../widgets/hex_color.dart';
 
-class PowerUser3 extends StatelessWidget {
+class SmartHome extends StatefulWidget {
+  @override
+  State<SmartHome> createState() => _SmartHomeState();
+}
+
+class _SmartHomeState extends State<SmartHome> {
+  int value = 0;
+
+  bool positive = false;
+
+  bool loading = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -138,7 +151,7 @@ class PowerUser3 extends StatelessWidget {
                     child: Row(
                       children: [
                         KText(
-                          text: 'Scheule ',
+                          text: 'Smart Mode ',
                           fontSize: 18,
                           color: Colors.black87,
                           fontWeight: FontWeight.bold,
@@ -165,10 +178,11 @@ class PowerUser3 extends StatelessWidget {
                   ),
                   ListView.builder(
                     physics: BouncingScrollPhysics(),
-                    itemCount: 10,
+                    itemCount: smartModel.length,
                     shrinkWrap: true,
                     primary: false,
                     itemBuilder: (BuildContext context, int index) {
+                      final item = smartModel[index];
                       return Container(
                         margin: EdgeInsets.only(
                           left: 15,
@@ -196,14 +210,68 @@ class PowerUser3 extends StatelessWidget {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      KText(text: 'Smart Lamp'),
                                       KText(
-                                        text: 'Dining Room  | Tue Thu',
+                                        text: '${item['title']}',
+                                        fontSize: 15,
+                                      ),
+                                      KText(
+                                        text: '${item['category']}  | Tue Thu',
                                         fontWeight: FontWeight.w400,
                                       )
                                     ],
                                   ),
-                                  RenderSvg(path: 'on_icon')
+                                  AnimatedToggleSwitch<bool>.dual(
+                                    current: positive,
+                                    first: false,
+                                    second: true,
+                                    dif: 10.0,
+                                    borderColor: Colors.transparent,
+                                    borderWidth: 3.0,
+                                    height: 26,
+                                    indicatorSize: Size(30, 20),
+                                    boxShadow: const [
+                                      BoxShadow(
+                                        color: Colors.black26,
+                                        spreadRadius: 1,
+                                        blurRadius: 2,
+                                        offset: Offset(0, .5),
+                                      ),
+                                    ],
+                                    onChanged: (b) {
+                                      setState(() => positive = b);
+                                      return Future.delayed(
+                                          Duration(seconds: 1));
+                                    },
+                                    colorBuilder: (b) =>
+                                        b ? Colors.yellow[900] : Colors.teal,
+                                    iconBuilder: (value) => value
+                                        ? Icon(
+                                            Icons.coronavirus_rounded,
+                                            size: 19,
+                                            color: Colors.white,
+                                          )
+                                        : Icon(
+                                            Icons.tag_faces_rounded,
+                                            size: 19,
+                                            color: HexColor('#ffffff'),
+                                          ),
+                                    textBuilder: (value) => value
+                                        ? Center(
+                                            child: KText(
+                                              text: 'ON',
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white,
+                                            ),
+                                          )
+                                        : Center(
+                                            child: KText(
+                                                text: 'OFF',
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.white),
+                                          ),
+                                  ),
                                 ],
                               ),
                             ),
@@ -213,7 +281,7 @@ class PowerUser3 extends StatelessWidget {
                               child: Row(
                                 children: [
                                   RenderSvg(
-                                    path: 'light',
+                                    path: '${item['image']}',
                                     height: 45,
                                   ),
                                   Padding(
@@ -285,6 +353,9 @@ class PowerUser3 extends StatelessWidget {
                         ),
                       );
                     },
+                  ),
+                  SizedBox(
+                    height: 20,
                   ),
                 ],
               ),

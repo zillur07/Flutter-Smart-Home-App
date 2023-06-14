@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smart_home_app/src/pages/grap.dart';
+import 'package:smart_home_app/src/widgets/grap.dart';
 
 import '../widgets/Ktext.dart';
 import '../widgets/hex_color.dart';
@@ -94,19 +94,21 @@ class PowerUser extends StatelessWidget {
                 //   ),
                 // ),
                 Positioned(
-                  top: 26,
+                  top: 29,
                   right: 15,
                   child: Container(
+                    height: 35,
+                    width: 35,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(50)),
                     child: Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(8.0),
                       child: RenderSvg(
                         path: 'persent',
                         color: HexColor('#507682'),
-                        height: 20,
-                        width: 20,
+                        height: 24,
+                        width: 24,
                       ),
                     ),
                   ),

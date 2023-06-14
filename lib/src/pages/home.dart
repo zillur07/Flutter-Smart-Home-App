@@ -1,21 +1,22 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
-import 'package:smart_home_app/src/pages/details_page.dart';
 
 import 'package:smart_home_app/src/pages/home_page.dart';
 import 'package:smart_home_app/src/pages/power_user.dart';
-
+import 'package:smart_home_app/src/pages/profile.dart';
 import 'package:smart_home_app/src/widgets/hex_color.dart';
-import 'package:smart_home_app/src/widgets/render_svg.dart';
-
-import 'power_user copy 2.dart';
+import 'smart_home.dart';
 
 class Home extends StatelessWidget {
   List<Widget> _buildScreens() {
-    return [HomePage(), PowerUser3(), DetailsPage(), PowerUser()];
+    return [
+      HomePage(),
+      SmartHome(),
+      PowerUser(),
+      ProfilePage(),
+    ];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
@@ -23,6 +24,7 @@ class Home extends StatelessWidget {
       PersistentBottomNavBarItem(
         icon: Icon(EvaIcons.home),
         title: ("Home"),
+        textStyle: TextStyle(fontWeight: FontWeight.bold),
         activeColorPrimary: HexColor('#ffffff'),
         activeColorSecondary: HexColor('#4C7380'),
         inactiveColorPrimary: CupertinoColors.white,
@@ -30,6 +32,7 @@ class Home extends StatelessWidget {
       ),
       PersistentBottomNavBarItem(
         icon: Icon(EvaIcons.optionsOutline),
+        textStyle: TextStyle(fontWeight: FontWeight.bold),
         title: ("Smart"),
         activeColorPrimary: HexColor('#ffffff'),
         activeColorSecondary: HexColor('#4C7380'),
@@ -37,6 +40,7 @@ class Home extends StatelessWidget {
         inactiveColorSecondary: Colors.red,
       ),
       PersistentBottomNavBarItem(
+        textStyle: TextStyle(fontWeight: FontWeight.bold),
         icon: Icon(EvaIcons.pieChart),
         title: ("Usage"),
         activeColorPrimary: HexColor('#ffffff'),
@@ -44,6 +48,7 @@ class Home extends StatelessWidget {
         inactiveColorPrimary: CupertinoColors.white,
       ),
       PersistentBottomNavBarItem(
+        textStyle: TextStyle(fontWeight: FontWeight.bold),
         icon: Icon(EvaIcons.person),
         title: ("Profile"),
         activeColorPrimary: HexColor('#ffffff'),

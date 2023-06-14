@@ -26,3 +26,4 @@ linter:
     prefer_const_constructors: false
     use_key_in_widget_constructors: false
     prefer_interpolation_to_compose_strings: false
+    sort_child_properties_last: false

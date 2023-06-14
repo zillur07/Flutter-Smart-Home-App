@@ -1,8 +1,10 @@
+import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
 import 'package:smart_home_app/src/consts/app_colors.dart';
+import 'package:smart_home_app/src/pages/details_page.dart';
 import 'package:smart_home_app/src/widgets/render_img.dart';
 import '../config/app_utils.dart';
 import '../widgets/Ktext.dart';
@@ -15,8 +17,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool isSwitched1 = false;
   bool isSwitched2 = true;
+  int value = 0;
+  bool positive = false;
+  bool loading = false;
+  bool positive2 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +114,10 @@ class _HomePageState extends State<HomePage> {
                                 bottom: 20,
                               ),
                               child: Container(
-                                child: Icon(Icons.notifications),
+                                child: Icon(
+                                  Icons.notifications,
+                                  color: Colors.black54,
+                                ),
                                 height: 35,
                                 width: 35,
                                 decoration: BoxDecoration(
@@ -848,22 +856,67 @@ class _HomePageState extends State<HomePage> {
                                           KText(
                                             text: 'AC',
                                             color: Colors.white70,
-                                            fontSize: 18,
+                                            fontSize: 16,
                                           ),
                                           KText(
                                             text: 'Living room',
                                             color: Colors.white70,
+                                            fontSize: 12,
                                           )
                                         ],
                                       ),
                                     ),
-                                    Switch(
-                                      value: isSwitched1,
-                                      onChanged: (value) {
-                                        setState(() {
-                                          isSwitched1 = value;
-                                        });
+                                    AnimatedToggleSwitch<bool>.dual(
+                                      current: positive,
+                                      first: false,
+                                      second: true,
+                                      dif: 10.0,
+                                      borderColor: Colors.transparent,
+                                      borderWidth: 3.0,
+                                      height: 22,
+                                      indicatorSize: Size(25, 16),
+                                      boxShadow: const [
+                                        BoxShadow(
+                                          color: Colors.black26,
+                                          spreadRadius: 1,
+                                          blurRadius: 2,
+                                          offset: Offset(0, .5),
+                                        ),
+                                      ],
+                                      onChanged: (b) {
+                                        setState(() => positive = b);
+                                        return Future.delayed(
+                                            Duration(seconds: 1));
                                       },
+                                      colorBuilder: (b) =>
+                                          b ? Colors.yellow[900] : Colors.teal,
+                                      iconBuilder: (value) => value
+                                          ? Icon(
+                                              Icons.coronavirus_rounded,
+                                              size: 15,
+                                              color: Colors.white,
+                                            )
+                                          : Icon(
+                                              Icons.tag_faces_rounded,
+                                              size: 15,
+                                              color: HexColor('#ffffff'),
+                                            ),
+                                      textBuilder: (value) => value
+                                          ? Center(
+                                              child: KText(
+                                                text: 'ON',
+                                                fontSize: 9,
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.white,
+                                              ),
+                                            )
+                                          : Center(
+                                              child: KText(
+                                                  text: 'OFF',
+                                                  fontSize: 9,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white),
+                                            ),
                                     ),
                                     // AdvancedSwitch(
                                     //   activeColor: HexColor('#659A6E'),
@@ -891,119 +944,168 @@ class _HomePageState extends State<HomePage> {
 
                       Expanded(
                         flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            left: 5,
-                            right: 15,
-                          ),
-                          child: Container(
-                            height: 150,
-                            decoration: BoxDecoration(
-                                color: HexColor('#9A7265'),
-                                borderRadius: BorderRadius.circular(10)),
-                            child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        left: 10,
-                                      ),
-                                      child: RenderImg(
-                                        path: 'light-bulbs.png',
-                                        height: 65,
-                                        width: 65,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        right: 10,
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                              top: 10,
-                                            ),
-                                            child: KText(
-                                              text: 'Colour',
-                                              color: Colors.white70,
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                          KText(
-                                            text: 'White',
-                                            fontSize: 18,
-                                            color: Colors.white70,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Spacer(),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 5, bottom: 10),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          KText(
-                                            text: 'Lamp',
-                                            color: Colors.white70,
-                                            fontSize: 18,
-                                          ),
-                                          KText(
-                                            text: 'Dining room',
-                                            color: Colors.white70,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Switch(
-                                          trackOutlineColor:
-                                              MaterialStateProperty.all(
-                                            HexColor('#659A6E'),
-                                          ),
-                                          value: isSwitched2,
-                                          onChanged: (value) {
-                                            setState(() {
-                                              isSwitched2 = value;
-                                            });
-                                          },
+                        child: InkWell(
+                          onTap: () {
+                            Get.to(DetailsPage());
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              left: 5,
+                              right: 15,
+                            ),
+                            child: Container(
+                              height: 150,
+                              decoration: BoxDecoration(
+                                  color: HexColor('#9A7265'),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                          left: 10,
                                         ),
-                                      ],
-                                    ),
-                                    // AdvancedSwitch(
-                                    //   activeColor: HexColor('#659A6E'),
-                                    //   activeChild: KText(
-                                    //     text: 'ON',
-                                    //     color: Colors.white,
-                                    //     fontSize: 13,
-                                    //   ),
-                                    //   inactiveChild: KText(
-                                    //     text: 'OFF',
-                                    //     color: Colors.white,
-                                    //     fontSize: 13,
-                                    //   ),
-                                    //   width: 56,
-                                    //   height: 23,
-                                    //   controller: _controller03,
-                                    // ),
-                                  ],
-                                )
-                              ],
+                                        child: RenderImg(
+                                          path: 'light-bulbs.png',
+                                          height: 65,
+                                          width: 65,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                          right: 10,
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                top: 10,
+                                              ),
+                                              child: KText(
+                                                text: 'Colour',
+                                                color: Colors.white70,
+                                                fontWeight: FontWeight.w400,
+                                              ),
+                                            ),
+                                            KText(
+                                              text: 'White',
+                                              fontSize: 18,
+                                              color: Colors.white70,
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Spacer(),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 5, bottom: 10),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            KText(
+                                              text: 'Lamp',
+                                              color: Colors.white70,
+                                              fontSize: 16,
+                                            ),
+                                            KText(
+                                              text: 'Dining room',
+                                              color: Colors.white70,
+                                              fontSize: 12,
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          AnimatedToggleSwitch<bool>.dual(
+                                            current: positive2,
+                                            first: false,
+                                            second: true,
+                                            dif: 10.0,
+                                            borderColor: Colors.transparent,
+                                            borderWidth: 3.0,
+                                            height: 22,
+                                            indicatorSize: Size(25, 16),
+                                            boxShadow: const [
+                                              BoxShadow(
+                                                color: Colors.black26,
+                                                spreadRadius: 1,
+                                                blurRadius: 2,
+                                                offset: Offset(0, .5),
+                                              ),
+                                            ],
+                                            onChanged: (b) {
+                                              setState(() => positive2 = b);
+                                              return Future.delayed(
+                                                  Duration(seconds: 1));
+                                            },
+                                            colorBuilder: (b) => b
+                                                ? Colors.yellow[900]
+                                                : Colors.teal,
+                                            iconBuilder: (value) => value
+                                                ? Icon(
+                                                    Icons.coronavirus_rounded,
+                                                    size: 15,
+                                                    color: Colors.white,
+                                                  )
+                                                : Icon(
+                                                    Icons.tag_faces_rounded,
+                                                    size: 15,
+                                                    color: HexColor('#ffffff'),
+                                                  ),
+                                            textBuilder: (value) => value
+                                                ? Center(
+                                                    child: KText(
+                                                      text: 'ON',
+                                                      fontSize: 9,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color: Colors.white,
+                                                    ),
+                                                  )
+                                                : Center(
+                                                    child: KText(
+                                                        text: 'OFF',
+                                                        fontSize: 9,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color: Colors.white),
+                                                  ),
+                                          ),
+                                        ],
+                                      ),
+                                      // AdvancedSwitch(
+                                      //   activeColor: HexColor('#659A6E'),
+                                      //   activeChild: KText(
+                                      //     text: 'ON',
+                                      //     color: Colors.white,
+                                      //     fontSize: 13,
+                                      //   ),
+                                      //   inactiveChild: KText(
+                                      //     text: 'OFF',
+                                      //     color: Colors.white,
+                                      //     fontSize: 13,
+                                      //   ),
+                                      //   width: 56,
+                                      //   height: 23,
+                                      //   controller: _controller03,
+                                      // ),
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ),
