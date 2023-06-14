@@ -1,16 +1,31 @@
-# smart_home_app
+# Smart Home App
 
-A new Flutter project.
+## Create by Zillur Rahman
 
-## Getting Started
+## Description
+This is Smart Home App UI Design.
 
-This project is a starting point for a Flutter application.
+## Dependencies
+      - cupertino_icons: ^1.0.2
+      - persistent_bottom_nav_bar_v2: ^4.2.8
+      - fl_chart:
+      - another_xlider: ^3.0.1
+      - animated_toggle_switch:
+      - get: 
+      - google_fonts:
+      - flutter_svg:
+      - eva_icons_flutter:
 
-A few resources to get you started if this is your first Flutter project:
+### Usage
+  - Homr Page.
+  - Details Page.
+  - Smart Home Page.
+  - Usage Page.
+  - Prifile Page.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Smart Home Apps Picture
+![Smart Home Ui](https://github.com/zillur07/Flutter-Smart-Home-App/assets/87537602/fbdc3801-38ad-4c73-a18e-6279d19d8b6b)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Apps Video 
+https://github.com/zillur07/Flutter-Smart-Home-App/assets/87537602/82a5d19f-4810-4693-b89c-3c6f604de4d7
