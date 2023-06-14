@@ -35,7 +35,6 @@ dependencies:
   flutter_svg:
   eva_icons_flutter:
   cupertino_icons: ^1.0.2
-  flutter_advanced_switch: ^3.0.1
   persistent_bottom_nav_bar_v2: ^4.2.8
   fl_chart:
   another_xlider: ^3.0.1
